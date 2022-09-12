@@ -5,6 +5,7 @@ Rails.application.routes.draw do
   resources :artisans do
     collection do
       patch :add
+      post :import
     end
   end
   devise_for :users

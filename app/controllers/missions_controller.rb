@@ -1,4 +1,5 @@
 class MissionsController < ApplicationController
+  before_action :authenticate_user!
   before_action :set_mission, only: %i[ show edit update destroy ]
 
   # GET /missions or /missions.json
@@ -65,6 +66,6 @@ class MissionsController < ApplicationController
 
     # Only allow a list of trusted parameters through.
     def mission_params
-      params.require(:mission).permit(:start_at, :end_at, :price, :description)
+      params.require(:mission).permit(:start_at, :end_at, :price, :description, :artisan_id)
     end
 end

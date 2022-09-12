@@ -10,7 +10,11 @@
       </ul>
     </div>
   <% end %>
+  <div>
+    <%= form.label :artisan %>
+    <%=form.collection_select(:artisan_id, Artisan.all, :id, :last_name,  {prompt: 'Affilier artisan'}) %>
 
+</div>
   <div>
     <%= form.label :start_at, style: "display: block" %>
     <%= form.date_field :start_at %>

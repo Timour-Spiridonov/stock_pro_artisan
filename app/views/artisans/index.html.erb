@@ -10,5 +10,8 @@
     </p>
   <% end %>
 </div>
-
+<%= form_with url: import_artisans_path, method: :post do |form| %>
+    <%= form.file_field :file %>
+    <%= form.submit 'Uploader le fichier'%>
+<%end%>
 <%= link_to "New artisan", new_artisan_path %>
