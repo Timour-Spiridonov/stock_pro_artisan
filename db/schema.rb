@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema[7.0].define(version: 2022_09_12_053304) do
+ActiveRecord::Schema[7.0].define(version: 2022_09_12_110005) do
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
 
@@ -24,6 +24,11 @@ ActiveRecord::Schema[7.0].define(version: 2022_09_12_053304) do
     t.datetime "updated_at", null: false
   end
 
+  create_table "artisans_skills", id: false, force: :cascade do |t|
+    t.bigint "artisan_id", null: false
+    t.bigint "skill_id", null: false
+  end
+
   create_table "missions", force: :cascade do |t|
     t.date "start_at"
     t.date "end_at"
@@ -31,6 +36,8 @@ ActiveRecord::Schema[7.0].define(version: 2022_09_12_053304) do
     t.text "description"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+    t.bigint "artisan_id", null: false
+    t.index ["artisan_id"], name: "index_missions_on_artisan_id"
   end
 
   create_table "skills", force: :cascade do |t|
@@ -51,4 +58,5 @@ ActiveRecord::Schema[7.0].define(version: 2022_09_12_053304) do
     t.index ["reset_password_token"], name: "index_users_on_reset_password_token", unique: true
   end
 
+  add_foreign_key "missions", "artisans"
 end

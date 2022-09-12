@@ -1,6 +1,19 @@
 <p style="color: green"><%= notice %></p>
 
 <%= render @artisan %>
+<%= form_with url: add_artisans_path, method: :patch do |form|%>
+<div>
+    <%= form.label :artisan %>
+    <%=form.hidden_field :artisan_id, value: @artisan.id %>
+</div>
+
+<div>
+    <%= form.label :skill %>
+    <%=form.collection_select(:skills_id, Skill.all, :id, :name,  {prompt: 'choisissez votre technique'}) %>
+
+</div>
+<%= form.submit %>
+<%end%>
 
 <div>
   <%= link_to "Edit this artisan", edit_artisan_path(@artisan) %> |

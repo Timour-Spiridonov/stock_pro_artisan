@@ -2,6 +2,13 @@ class ArtisansController < ApplicationController
   before_action :set_artisan, only: %i[ show edit update destroy ]
 
   # GET /artisans or /artisans.json
+  def add
+   
+    artisan = Artisan.find(params[:artisan_id])
+    skill = Skill.find(params[:skills_id])
+    artisan.skills << skill unless artisan.skills.include?(skill)
+    return redirect_to artisans_path, notice: 'Ajout de nouvelle compétence'
+  end
   def index
     @artisans = Artisan.all
   end
