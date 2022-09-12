@@ -1,0 +1,42 @@
+<%= form_with(model: artisan) do |form| %>
+  <% if artisan.errors.any? %>
+    <div style="color: red">
+      <h2><%= pluralize(artisan.errors.count, "error") %> prohibited this artisan from being saved:</h2>
+
+      <ul>
+        <% artisan.errors.each do |error| %>
+          <li><%= error.full_message %></li>
+        <% end %>
+      </ul>
+    </div>
+  <% end %>
+
+  <div>
+    <%= form.label :first_name, style: "display: block" %>
+    <%= form.text_field :first_name %>
+  </div>
+
+  <div>
+    <%= form.label :last_name, style: "display: block" %>
+    <%= form.text_field :last_name %>
+  </div>
+
+  <div>
+    <%= form.label :tjm, style: "display: block" %>
+    <%= form.text_field :tjm %>
+  </div>
+
+  <div>
+    <%= form.label :siret, style: "display: block" %>
+    <%= form.text_field :siret %>
+  </div>
+
+  <div>
+    <%= form.label :description, style: "display: block" %>
+    <%= form.text_area :description %>
+  </div>
+
+  <div>
+    <%= form.submit %>
+  </div>
+<% end %>
